@@ -1,0 +1,130 @@
+IBM Power10: A multicore microprocessor family, governed by POWER architecture (Performance Optimization With Enhanced RISC)
+AIX 7.2: Unix based operating system provided by IBM
+
+Hardware: 15 Power10 64 bit Processors (3.550 GHz each)
+Storage: 10 TB Flash backend; Flash storage, is a data storage technology based on high-speed, electrically programmable memory. The speed of flash storage is how got its name: It writes data and performs random I/O operations in a flash. Flash storage uses a type of nonvolatile memory called flash memory (basically like ROM). Nonvolatile memory doesn’t require power to maintain the integrity of stored data, so even if your power goes out, you don’t lose your data. In other words, nonvolatile memory won’t “forget” the data it has stored when the disk is turned off.
+
+File System: JFS2 (Journaled File system) provided by AIX. A JFS its own recovery capability in the event of a failure. In a journaling file system, the information about the changes is recorded in a separate log (the journal) before the indexes to the files are updated.
+
+Virtualized SAN Storage (IBM system used is FS9200) - Storage virtualization separates the storage-management software from the underlying hardware infrastructure in order to provide more flexibility and scalability. This can be used to create flexible and scalable pools of storage resources.
+
+FS cache setting on AIX, more info vs CIO vs asyncio: The purpose of the AIX file buffer cache is to reduce disk access frequency when journaled file systems are used . If this cache is too small, then disk usage increases and potentially saturates one or more disks. If the cache is too large, then memory is wasted. I think the comparison is between CIO (concurrent IO) and ASYNC_IO (Asynchronous IO). CIO is enabled on DB and ASYNCIO on File system. [[You can configure the AIX file buffer cache by adjusting the minperm and maxperm parameters. In general, if the buffer hit ratio is low (less than 90 percent).]] 
+
+NODEFER_ALLOCATE: The DEFER and NODEFER options determine whether to defer preparation for dynamic SQL statements that refer to remote objects, or to prepare them immediately.
+
+SCA$IBS/MTM: Java Client->JDBC->MTM(this picks TCP socket and distributes loads to servers below it)->SCAIBS1/SCAIBS2/etc. so one MTM has multiple IBS and PJI servers under it
+
+AIX SMT setting is OS wide, common for both batch and online; setting applicable for all processors. so if there are 128 processors and SMT=8, total LOGICAL processors are 1024
+
+sys% vs usr% (on page Host Server Utilization Statistics (SMT=2)): 
+Usr% (User CPU utilization) - The amount of User CPU this process used during the sample interval.
+Sys% (System CPU utilization) - The amount of System CPU this process used during the sample
+interval.
+
+Common Tunables:
+================
+num_cmd_elems: Maximum number of pending requests in a Fibre Channel adapter. To get optimum performance, set the value of the num_cmd_elems parameter to the maximum supported range.
+
+max_xfer_size: How big the block I/O size can pass over the HBA port. Recommended value: 0x200000. 
+
+Set I/O pacing:I/O pacing limits the number of pending write operations to file systems, thus reducing the disk I/O rate. AIX is installed with I/O pacing disabled. You can enable I/O pacing with the command:
+
+Change the frequency of syncd: If you run this daemon more frequently, you will need to flush a fewer number of pending I/O operations to disk. Therefore, the invocation of syncd will cause a reduced peak in I/O operations.
+
+Quick wins in BIDV using IBM recommendations:
+ 
+•	LUN (Logical unit) algorithm to be set to shortest_queue
+•	LUN reserve policy to be set to no_reserve
+•	Kernel ioo parameter J2_DynamicBufferPrealocation set to 256 : j2_dynamicBufferPreallocation must be increased for that file system, as the I/O load on the file system might be exceeding the speed of preallocation. A value of 0 disables dynamic buffer allocation completely.
+•	Kernel net parameter tcp_nodelayack set to 0 (https://www.ibm.com/support/pages/enabling-tcpnodelayack-can-improve-network-performance-between-ibm-websphere-datapower-soa-appliance-and-applications-running-aix-including-websphere-mq-and-tivoli-access-manager)
+•	Kernel net parameter sack set to 0 : A value of 1 makes all TCP connections negotiate sack. Default is zero, which disables the negotiation. sack feature needs support from the peer TCP. The negotiation phase during connection initiation determines that. When out of order segments are received , Selective Acknowledgments from the receiver informs the sender of the data that is received so that the sender can retransmit only the missing segments. This results in less unnecessary retransmitted segments. Sack is useful for recovering fast from multiple packet drops in a window of data.
+ 
+FIS additionally suggests as a quick win:
+•	Increase num_cmd_elems from 1024 to 3200 – if HBA Software supports such value
+ 
+Second round of changes:
+•	Design new LVM layout following FIS best practices in this area.
+
+
+
+
+
+Technical Points
+================
+Checking the nmon report that was sent on 30/07, Rick has observed that the MTM queue monitor takes up additional CPU. 
+While it may not be a cause of the slowdowns, reducing this will help. 
+FIS has optimised the queue monitor and will provide the latest one (G2 has already sent their existing version). 
+There is also a suggestion to update the default for the monitor SUMMARY to 45, if it hasn't already been done.
+
+BEFORE_IMAGE Journaling
+BEFORE_IMAGE is a form of Journaling that creates "mini-backups" preceding each database update. Backward Recovery
+uses these mini-backups to restore the database as far back in time then it replays the database updates."BEFORE_IMAGE"
+journaling requires more disk I/O and storage space than M-level (or NOBEFORE) journaling but delivers faster recovery times
+from system failures . backward recovery.
+GT.M Journaling
+
+Note
+As stated in the GDE chapter, the MM database access method bypasses the BG(buffered global) buffer pool and relies entirely
+on the operating/file system to manage traffic between memory and disk. Because with MM (mapped memory), GT.M has no
+control over the timing of disk updates, BEFORE_IMAGE journaling is not an option with MM; attempts to
+use these two facilities together produce an error.
+
+
+NOBEFORE_IMAGE Journaling
+"NOBEFORE_IMAGE" is a form of M-level Journaling that sequentially stores each database update in a journal file. A
+forward recovery operation restore the database by replaying these database updates. "NOBEFORE_IMAGE" consumes less I/O
+bandwidth in normal use and helps obtain more throughput from the available servers.
+Choosing between BEFORE_IMAGE and NOBEFORE_IMAGE
+The choice between BEFORE_IMAGE journaling and NOBEFORE_IMAGE journaling is important especially in a logical
+multi-site database replication deployment. If an application pushes the I/O bandwidth of the servers on which it runs,
+NOBEFORE_IMAGE journaling may help obtain more throughput from available servers. BEFORE_IMAGE journaling could be
+the likely choice if an application requires quicker recovery in the unlikely event of a crash. Forward recovery.
+
+Epoch
+An epoch is a checkpoint at which GT.M creates a state where a database file and its journal file are in complete sync and to
+which GT.M can make a consistent recovery or rollback. GT.M processes constantly cooperate with each other to write the
+data from the buffers to the secondary storage. At epoch time, GT.M holds a critical section to complete all pending write
+operations. Other processes updating the database wait till GT.M completes the epoch. GT.M epoch events have a slightly
+higher(possibly spiky) impact. With -EPOCHTAPER, GT.M tries to minimize the epoch duration by reducing the amount of
+data to flush as an epoch event approaches.
+
+-[NO]EPOCHTAPER
+Tries to minimize epoch duration by reducing the number of buffers to flush by GT.M and the file system (via an fsync()) as
+the epoch (time-based or due to a journal file auto-switch) approaches. By default, EPOCHTAPER is enabled. Epoch tapering
+reduces the impact of I/O activity during an epoch event. Application that experience high load and/or need to reduce latency
+may benefit from epoch tapering.
+-[NO]
+
+AIX file system structure:
+VG	lsvg command (volume group)
+|
+PV	lspv command (physical volume)
+|
+LV	lslv command (logical volume contains many PPs)
+
+Logical Volume Manager (LVM) uses a construct called a "pbuf" to control a pending disk I/O.
+
+The lvmo command sets or displays pbuf tuning parameters
+
+With the BG (buffered global) access method, each open database file has a shared memory segment associated with it. This shared memory
+contains a pool of disk blocks (the global buffers) as well as associated control structures (for example, for concurrency control).
+
+
+LMS config: The configuration at the LMS configuration file multi_site.repl is considering is following the purpose of the environments and is set up correctly
+
+LMS Helper Processes
+Helper processes accelerate the rate at which an Update Process can apply an incoming replication stream to the database on a
+replicating instance. They increase replication throughput, decrease backlog, and improve manageability.
+The GT.M database engine performs best when multiple processes concurrently access the database, cooperating with one
+another to manage it. Therefore, it is possible for the tens, hundreds or thousands of application processes executing on an
+originating instance to outperform a replicating instance with only a single Update Process. Helper processes enable the update
+process to apply database updates faster and thereby keep up.
+There are two types of helper processes:
+1. Reader: Reader processes read the update records in the Receive Pool and attempt to pre-fetch database blocks into the
+global buffer pools, so they are more quickly available for the Update Process.
+2. Writer: Writer processes help the Update Process by flushing database and journal records from shared memory (global and
+journal buffers) to the file system.
+
+
+
+

@@ -1,0 +1,16 @@
+flash based memory details: Flash storage is a data storage technology based on high-speed, electrically programmable memory. The speed of flash storage is how got its name: It writes data and performs random I/O operations in a flash. Flash storage uses a type of nonvolatile memory called flash memory (basically like ROM). Nonvolatile memory doesn’t require power to maintain the integrity of stored data, so even if your power goes out, you don’t lose your data. In other words, nonvolatile memory won’t “forget” the data it has stored when the disk is turned off.
+
+Virtualized SAN Storage (IBM system used is FS9200) - Storage virtualization separates the storage-management software from the underlying hardware infrastructure in order to provide more flexibility and scalability. This can be used to create flexible and scalable pools of storage resources.
+
+FS cache setting on AIX, more info vs CIO vs asyncio: The purpose of the AIX file buffer cache is to reduce disk access frequency when journaled file systems are used . If this cache is too small, then disk usage increases and potentially saturates one or more disks. If the cache is too large, then memory is wasted. I think the comparison is between CIO (concurrent IO) and ASYNC_IO (Asynchronous IO). CIO is enabled on DB and ASYNCIO on File system. [[You can configure the AIX file buffer cache by adjusting the minperm and maxperm parameters. In general, if the buffer hit ratio is low (less than 90 percent).]] 
+
+NODEFER_ALLOCATE: The DEFER and NODEFER options determine whether to defer preparation for dynamic SQL statements that refer to remote objects, or to prepare them immediately.
+
+SCA$IBS/MTM: Java Client->JDBC->MTM(this picks TCP socket and distributes loads to servers below it)->SCAIBS1/SCAIBS2/etc. so one MTM has multiple IBS and PJI servers under it
+
+Page 8 - AIX SMT setting OS wide, common for both batch and online? -> System wide setting for all processors. so if there are 128 processors and SMT=8, total LOGICAL processors are 1024
+
+sys% vs usr% (on page Host Server Utilization Statistics (SMT=2)): 
+Usr% (User CPU utilization) - The amount of User CPU this process used during the sample interval.
+Sys% (System CPU utilization) - The amount of System CPU this process used during the sample
+interval.

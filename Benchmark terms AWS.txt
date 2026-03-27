@@ -1,0 +1,29 @@
+EC2 (Amazon Elastic Cloud 2) is a web service that provides secure, resizable compute capacity in the cloud.
+
+EBS (Elastic Block Store) volumes are essentially virtual hard drives that can be attached to your EC2 instances to store data persistently.
+
+EBS can be attached or disconnected from any EC2 instance. EC2 perfomance is measured in IOPS (Input Output Operations Per Second)
+
+EBS can have four types of storage media (also called volume types), these are differentiated in terms of pricing by size and performance. FIs has used two of these for benchmarking:
+ -GP3: Latest SSD (Solid State Drives) are GP3 (General Purpose Version 3) released in 2020. Durability - 99.8%-99.9% ((0.1% - 0.2% annual failure rate)). Max IOPS - 16,000. Max throughput - 1000 MB/s
+ -Provisioned IOPS SSDs are improvements over GP3 SSDs. The latest one is called io2 but the benchmarking was done on io1 (previous version). io1 metrics are: 99.8-99.9% durability, Max IOPS - 64,000. Max throughput 1000 MB/s.
+ 
+Improved disk storage layout, including multiple striped disks per volume group and filesystem - these are provided by FIs simlar to AIX recommendations
+
+Linux ADM tuning is a process to switch system performance based on profiles. Example profiles are:
+
+- balanced
+- throughput-performance
+- latency-performance
+- powersave
+- virtual-guest
+- virtual-host
+
+AWS Hyperthreading enables a single core to behave like multiple cores, while multicore processing involves having multiple physical cores on a single processor, each capable of executing a separate thread simultaneously. SIMILAR TO SMT in AIX
+
+
+AES 256 Plug-in Library Architecture: The Advanced Encryption Standard (AES) is a symmetric block cipher that the US government selects to protect classified data. symmetric means that the same cryptographic key is used to both encrypt and decrypt messages . 
+
+
+Online Backup Summary slide shows that profile to profile file system back scripts run quicker than profile to backup profile system (presumably onn other machines). Weird slide.
+
