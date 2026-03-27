@@ -1,0 +1,264 @@
+What is AGILE
+	Rapidly adopting to change in technology
+
+Examples of Digital Disruotors
+	Apple
+	Netflix
+	FAcebook
+	Google
+	Uber
+	Zoom
+	Amazon
+	Tesla
+	Airbnb
+
+Waterfall model
+	Requirements
+	Design
+	Development
+	Testing
+	Deployment
+	Maintenence
+
+Agile Sprint 
+	Plan
+	Design
+	Develop
+	Test
+	Deploay
+	Preview
+	Launch
+
+Iterative development
+to build something
+get some feedback
+refine it to make better
+
+Incremental development
+keep doing until the product is good enough
+
+Agile 
+	Agility for a software development organization is the ability
+	to adapt and react expeditiously and appropriate to change in its
+	environment
+
+Agile methods promotes
+	Disciplined project Management proces
+	encourages frequent inspection and adaption
+	a leadership philosophy that encourages teamwork
+	self organization and accountability
+	rapid delivery of high quality software
+	aligns development with customer needs
+
+Agile manifesto 4 agile values
+	individuals and interctions over process and tools
+		interacting with team about process and tools
+	working software over comprehensive document
+		focus is more on development than documenting
+	Customer collaboration over contract negotiation
+		Customer is a part of project in every sprint
+	Responding to change over following a plan
+		
+
+Agile principles 12 principles
+	Customer satisfaction
+	welcome change
+	deliver frequently
+	working together
+	motivated team
+	face to face
+	working software
+	constant pace
+	good design
+	simplicity
+	self organisation
+	reflect and adjust
+
+Taditional v/s Agile
+PIC in vivo
+
+Agile paradigm shift
+PIC in vivo
+
+Waterfall vs Agile
+Pic in vivo
+
+Agile mindset is all about
+	Collective ownership
+	self organised teams
+	transperency
+	mutual trust
+	consensus driven
+	effective timely feedback
+	open and clear communication
+	collaboration
+
+Agile Scrum
+	A lightweighted agile project management framework used primarily
+	for software development
+
+	defines some general guidlines with only a few rules eoles events
+	and artifacts
+
+	roles
+		product owner
+		scrum master
+		development team
+	events
+		sprint
+		daily scrum/stand-up
+		sprint plannig
+		sprint review
+		sprint restrospection
+	artifacts
+		product backlog
+		sprint backlog
+		product increment
+
+Scrums max members count is 7 to 8
+
+Kanban
+	An agile tool for managing the flow and continous delivery of
+	work or information in a process
+
+	the pull model of kanban makes the flow of work visible across
+	the team and exposes bottlenecks so that the ream can address them 
+	quickly
+
+	core practices
+		visualize the workflow
+		limit work in process
+		manage flow
+
+Extreme programing
+	empowers developers to confidently respond to changing
+
+Lean
+	a principle  driven tool based philosophy that focuses on eliminating waste
+	so that all activities/steps add value from the customers perspective
+
+Scrum values
+	courage
+	focus
+	commitment
+	respect
+	openness
+Three pillars of empiricism
+	transperency
+	inspection
+	adaptation
+
+Scrum framework
+pic in vivo
+
+Product owner
+	Responsible for maintaining the product backlog
+	Defines and priotize feature according to market value
+
+Scrum master
+	Responsible for rnacting scrum values and practices
+	coach and enable the scrum team
+	acts as change agent and servent leader
+
+Development team
+	cross functional team(progrmaers, testers, designers,etc..)
+	teams are self organizing
+	typical team size from 5 to 9 members
+	adapt to change
+	ensures quality
+
+Usr story
+definition of ready
+definition of done
+
+Agile estimation
+	estimation planning poker
+		each estimator is given a deck of crds
+		each card has a valid estimae written on it 
+		customer/Product owner reads a story and its discussed briefly
+		each estimator selects a card thats the estimator estimaates
+		card are turne over so all can see them
+		discuss differencees
+		re-estimate untill estimates converge
+
+Kanban
+	is part of approach where the pull comes from demand and products are made to order
+	it uses the rate of demand to control the rate of production
+
+Meaning of Kanban
+	Kanban is a management method for
+		directly improving service delivery
+		catalyzing improvements
+
+General practices
+	visualize
+	limit work in progress
+	manage flow
+	make policies explicit
+
+Service delivery principles
+	uunderstand and focus on ur cust needs and expectation
+	manage the work let people self organize around it
+	ur organization is an ecosys of interdep services steered by its poloicies
+
+kanban values
+	customer focus
+	flow
+	leadership
+	transperency
+	balance
+	collaboration
+	understanding......
+
+to understand sys behaviour
+	lead time
+	throughput
+	flow efficiencey
+	faliure demand
+	initial quality
+	blockers
+	WIP levels
+	discard rates
+
+SAFe 
+	its a combination of Lean, Agile and DevOps 
+
+Busuness agility
+	Entire organisatio engaged in continually and proactively
+	delivering innovative business solution faster than the competition
+
+House of lean
+PIC in vivo
+	Respect for people and culture 
+	flow
+	
+SAFe core values
+	Alignment
+	transperencey
+	built in quality
+	program execcution
+
+Agile Release trains(ARTs)
+	a virtual organization of 5-12 teams(50-125+ individuals)
+	team of agile teams that continuously deliver value
+	
+Cross fuctional Agile Release trains
+	Business
+	product mgnt
+	hardware
+	software
+	quality
+	testing
+	compliance
+	operations
+	security
+
+roles on Agile release train
+	Release train engineer acts as the chief scrum master for the train
+	system architecture/engineering provides architectural guidance and tech enabledment to teams on train
+	bussiness owners are key stakeholderrs on agile release train
+	product managene owns defines aand prioritize the progrm bacl=klog
+	system team provides process and tools to intergrate and evaluate system
+
+
+	

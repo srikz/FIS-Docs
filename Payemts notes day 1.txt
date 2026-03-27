@@ -1,0 +1,114 @@
+Classification of Payments:
+	Cash Transaction
+	Non Cash Transaction:
+		Paper based:
+			Check Clearing system:
+				Pay order
+				DD
+				RTGS
+		Non Paper Based(electronic Transaction):
+			Pull transaction
+				payee at the instruction of payer 
+				pulls the money from payer
+			Push transaction
+				payer push the money to payee
+
+
+Electronic transaction
+	Retail payments(less than 2L):
+		High volume and low value except check clearence
+
+
+	Gross Payments(whole sale Payment system):
+		High value and low volume
+
+Push system working:
+	Payer deposite money in payer bank
+	Payer bank sends the money to payment system
+	Payments system sends money to payee bank
+	from payee bank payee receives the money
+Pull system working:
+	Payer sends the insturction to payee
+	Payee deposite the isntructuion in payee bank
+	Payeee bank sends to payemt system
+	Payment system passes to payer bank
+	payer bank verifires and sent to payemt system
+	Payment system sends to payee bank
+	Payee receives from payee bank
+
+types of retail payments:
+	Card based system
+	cheque clearing 
+	electronic clearing
+	electoring funds transfer
+	ongoing and future projects
+
+process in payment sys:
+	clearing 
+		The process of finding out who owes how much to whom
+		Clearing house comes in between
+		it can be bank or private sector
+	settelment
+		The money moves between two people
+		holds the account of payer and payee
+		it is the bank
+Bi-Lateral settelment - Transaction btw 2 people
+Multi-lateral settelment - Transctin btw more than 2 people
+On us clearing (Intra bank transfer) - Money moving in two individuuals on same bank
+
+
+Clearing house example
+	A	B	C	D	To give
+--------------------------------------------------
+A	0	200	450	700	1350
+B	60	0	90	45	195
+C	230	340	0	590	1160
+D	125	250	75	0	450
+--------------------------------------------------
+To get	415	790	615	1335	3155
+Net	-935	595	-545	885	0
+
+---------------------------------------------------------
+
+Dr A		935
+Dr C		545
+cr clg hse		1480
+Dr clg hse	1480
+cr B			595
+cr d			885
+		2960	2960
+
+---------------------------------------------------------
+
+ACH debit= ECH debit
+ACH credit = ECH credit
+
+ACH Debit :Direct depit process - Automatic clearing house
+	paying bills automatically
+	Money debeted from payer acount
+
+ACH Credit Clearing (Electronic Clearing service in India)
+1. Employee insturtion to Employer
+2. Employer sending instruction to ODFI(Bank)
+3. Banc send to ACH operator
+4. ACH sending to RDFI
+5. RDFI informs prior information to employee
+6. amount debited from payee and credited to employee
+ 
+
+RDFI - Receiveing Sepository Financial Institution
+ODFI - Originating Depository Financial Institution
+
+Types of Payments:
+Card
+NEFT
+RTGS
+UPI
+Check
+
+Electronic Fund Transfer:
+Infinet - Indian financial network
+IFSC code - unique code of the benificiary bank of 11 characters
+	1st 4 letters is of charaters and 5th is zero and rest can be alpha numeric
+For NEFT details provide
+	benificiary account number, bank, ifsc, type of account

@@ -1,0 +1,254 @@
+Similarities of debit and credit card
+Both offer special rewards
+Payments made with the help of pin number
+withdraw is done from atms depending on cash limit
+
+Differences of credit and debit card
+Credit limit and debit card amount in card
+monthly bill and debit card is free from hassle of oaying those bills
+
+digital payment:
+Transfering money throngh digital devices
+
+PAyment evoluation
+Manually driven operation
+new payment type and form factor
+uberization of settlement cycle
+costly and slow experiences 
+inovative and product services
+
+types of payment system
+manual
+	cash
+	cheque
+	promissory note
+	bill of exchange
+		three people : Drawer Drawee and payee
+	bank draft
+	money or postal order
+	letter of credit
+	gift voucher
+digital
+	Automatic clearing house
+	electronic clearing services
+both manual and digital
+	RTGS
+		payer-> payer bank->settlement->payees bank->payee
+	NEFT
+		payers -> payers bank-> clearing house->settlement->clearing house->payee
+	IMPS
+		payer->payer bank->payee ank->payee payer bank ->clearing payee bank -> clearing
+	Direct debit
+	card payments
+	QR code
+		
+Pull:
+	all card
+	prepaid	
+
+Push: usd
+	adaar payeme
+	upi
+	mobile wallets
+	pos terminal
+	interne
+	mobile
+	bhim
+
+
+Online card ssystem
+Payer -> payer bank->clearing house->Payee bank->Payee
+
+payer -> card holder
+payee-> Merchant
+payer bank-> card issuing bank(card issuer)
+Payee bank-> acquirer
+clearnig house->card assosiation
+
+flow (authorization):
+	cardholder->merchant
+	merchant->Acquirer
+	acquirer->issuer
+	Issuer->accquirer
+	accquirer->merchant
+
+Authorization cont.
+	issure bills ->cardholder
+	cardholder->Issuer
+
+Authorization and capturing happen on same day
+clearing happen on second day
+settlement happen on third day
+
+Authorization actual working backend:
+	cardholder payes merchant
+	merchant sends card details to front end processor
+	the FEP trnsfers card details to appropriate card network
+	card network identifies the issusing bank and requests payment authorization
+	if funds are available on the card issuing bank sends approval code to merchant 
+	the merchants payment terminal collects all authorization in a batch
+	if approved the merchant completes the sale and the customer receives a receipt
+
+capture:
+	the merchant sends the card details ina batch to the acquirers front end processor
+	the front end processor frowards the batch to the backend processor
+
+clearing:
+	after completing copience and security checks backend processor forwards the batch to the card network
+	the card network send each approved transaction to the appropriate issuing bank
+
+settlement:
+	issuer bank releases funds through the card network
+	the card network pay the processor its percentage of remaning funds
+	the processor credits the acquirer the original amount
+	the acquirer credits the merchant
+
+card association is also called as interchange
+visa charges are called interchange fee
+acquirer charges are called merchant discount
+
+card types
+	swipe
+	chip and signature
+	chip and pin
+	contactless/NFC
+
+card acceptance methods
+	card present transaction
+	card not present tranc(IVR)
+	card not present tranc(online payment)
+
+Gateway:
+	cardholder pays the merchant for a purchase through virtual terminal or software connected to gateway
+	the virtual terminal sends the credit card details to gateway the gateway sends the details to front end processor
+	the font end processor trensfers the credit card details to the appropriate credit card network
+	the card network identifies the issuing bank and request payment authorization
+	if funds are available on card the issuing bank sends an approval to merchant
+	the vertual terminal collects all authorizations in a batch
+	if approved the virtual terminal emails a receipt to the customer to complte the sale
+
+How do they make money:
+	fees
+		issuing bank charge interchang (issuer to card association)
+		card brands charge assesmenst fees(cards to merchant)
+		processors charge a markup(merchant discount) fess(processor  to acquirer or separate entity)
+
+visa assesments fees to merchat:
+	percent of volume = 0.13%
+	trnsaction fee = 0.0195 $
+	monthly fee = varies
+
+master card assesments fees to merchat:
+
+
+Trade:
+	Any exchange of goods and services for other goods and services or for money
+
+	When the trade is happening btw 2 people with the country then it is called domastic trade
+	when its happening btw two people accross the country then it is international trade
+
+trade transactions:
+	payee = seller/exproter
+	payer = buyer/importer
+	bankers = 2 banks for buyer and seller
+	carrier = road, trialway, sea, air
+		(lorry receit, trailway, bill of lading, airway receit)
+	customs authorities = for international clearences
+	insurers = inserencecs for goods
+	freight frowarders = to book space to cary huge amount of goods	
+
+Risks in trade:
+	Counterparty Risk -> buyer faces the risk that sller might not supply on time 
+				or migght supply spurious goods. seller faces the risk that buyer might not pay on time
+
+	Country risk -> even when buyer is willing t pay they might be unable to pay due to restrictions on foreign exchange 
+				transaction imposed by his country
+
+	legal risk -> contractual terms might be interpreted differently in defferrent countries parties may not get the level 
+				of protection that they anticipate
+
+	exchange risk -> fluctuations in exchange rates might cause profits to go down or costs to go up
+
+
+Trade documents:
+	commercial documents
+		invoice
+		bill of lading, railway receipt
+		packing list
+		inspection certificate
+	regulatory documents 
+		shipping bill
+		bill of entry
+		certificate of origin
+	financial documents
+		bill of exchange
+		drafts
+		insurance policy/ certificate
+
+Pre requisites:
+	freely exportable/importable
+	restricted for export/import
+	prohibited fro export
+
+types of trade transaction:
+Advance payment(DP document against payment)
+	payment is done before receiving goods
+open account(DA document against acceptance)
+	payment is done after receiving the foods
+
+Letter of credit
+	 A payment undertaking provided by a buyers bank to a seller, on behalf of the buyer, to effect paymnet to 
+	the seller provided the seller complies with the documentary requirements required under the credit
+
+parties to a letter of credit
+	applicant/buyer
+	beneficiary
+
+LC issuance process
+	sales contract between applicant and beneficiary
+	applicant submitting LC application to issuing bank
+	Issusing bank LC issuance charge to advising bank
+	advising bank advising the beneficiary
+
+Confirmation of LC
+	process whereby a bank other than the issuing bank adds their payment confirmation to an already issued Lc
+	
+	done in situattions where the beneficiary might not be comfortable with the credit rating of the existing 
+	issuing bank
+	
+	the confirmation added to the Lc assures the supplier that in case of failure of issuing bank to honour the 
+	payment commitment the confirming bank will step in
+
+
+Some common terms:
+	LC at sight
+		payment under the LC will be made immedistely on presentation of documents
+	Usance LC
+		payment under the LC will be made after an agreed credit period as per the contract betwee the buyer and the seller
+	Negotiation
+		commonly referred term for submission of document under the LC for claiming payment . correct term is presntation
+	Restricted LC
+		credit where document ca be submitted only to a specific bank for claiming payment
+	Lc expiry	
+		The lastets date by which documents under the cresit have to be submitted
+
+Risks in payment systems	
+	reputation risk
+		payment not made in time then customer will face penalti
+	Strategic risk
+		
+	Credit risk
+		oweing bank not paying the money
+	liquidity risk
+		out of money to pay money
+	legal risk
+		payment not made in time due to system failure
+	operational risk
+		the failure of system coz of ineffective process of system or people
+
+To mitigate the risk
+	An institution general creditworthiness
+	ability to manage and control intra day funds positions
+	maintain credit policies and controls at customer levels
+	strong operational controls and contingency plans
+

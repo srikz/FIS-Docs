@@ -1,0 +1,54 @@
+DBTBL Levels
+
+DBTBL(, 1 File Definitions
+DBTBL(, 2 Screen Definitions
+DBTBL(, 3 Filer Executives
+DBTBL(, 4 DATA-QWIK Queries
+DBTBL(, 5 Report Definitions
+DBTBL(, 7 Trigger Definitions
+DBTBL(, 8 Index Definitions
+DBTBL(, 9 Journal Definitions
+DBTBL(,10 Pre-5.2 Filer Definitions
+DBTBL(,11 Data Item Documentation
+DBTBL(,12 System Table Documentation
+DBTBL(,13 Pre/Post Processors
+DBTBL(,14 Data Item Protection
+DBTBL(,15 Conversion-Related
+DBTBL(,16 Data Exchange
+DBTBL(,17 Export Definitions
+DBTBL(,18 Stored Procedures
+DBTBL(,20 5.2 Index of DBTBL
+DBTBL(,22 Aggregate Definitions
+DBTBL(,25 Procedure Definitions
+DBTBL(,33 Batch Definitions
+
+
+Prompt the user 3 times for Name and Account number
+Store the info in array using format: ARRAY(ACCOUNT)=NAME
+
+Order through array and write out:
+
+Name has account number Account
+
+To prompt user for a number and to print out to screen the numbers from 1 to value entered on screen on one line, separated by a comma.
+Create the PSL procedure and create a new method, Prompt User for an Account Number. Use getRecord to retrieve the Account information and write out to the screen the Balance and Status
+Example:
+
+ACN Data Items
+
+BAL - Balance
+
+STAT – Status
+
+Create routine named Zinitials.
+Prompt user for First Name, then Last Name, and then City, phone number and email id.
+
+Write that information to the screen in proper Address Format: First Name Last Name from City
+
+Must verify the email id and phone number using pattern matching.
+
+Create a new routine for an employee management services. Create a menu screen contains, add employee, edit employee, search employee and view employee. In Add screen get a employee number, name, designation to the user.
+Modify the PSL procedure created before and create a new method
+Create a new file in spool directory
+
+Write “Hello First File Program” to that file and close the file
